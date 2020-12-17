@@ -12,6 +12,7 @@ using namespace SmartScan;
 int main()
 {
     std::cout << "Smart Scan Command Line Interface Application" << std::endl;
+    std::cout << "MOCK TRAKSTAR DEVICE MODE. MOCK DATA WILL BE USED" << std::endl;
 
     //create a new SmartScanService object with mock data:
     SmartScanService s3(true);

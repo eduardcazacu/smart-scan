@@ -1,28 +1,22 @@
-# SmartScan Software Repository
+# SmartScan Software Repository - RELEASE branch
 
 ## Folder Structure:
 1. Root
-    1. Matlab = Matlab code used for the filtering
-    2. SmartScanService - The main c++ project
+    1. Binaries - Precompiled CLI App (64 bit). 
+        1. CLI - CLI to be used with the TrakSTAR device (Make sure the driver fromNDI TrakStar is installed on the computer first).
+        2. CLI-Mock - CLI working with mock data. No TrakSTAR device or drivers are needed. Only useful as a demo.
+    2. Lib - This is where the magic is. Copy the SmartScanService directory to your project and include it like `#include "SmartScanService/SmartScanService.h"`. The NDI folder includes the TrakSTAR library that needs to be added to the project preferences (otherwise you will get linker errors when building). The ATC3DG64.DLL fille needs to be added next to your executable when running (i.e. for VS, in Project Root/x64/Debug/).
 
-## Getting started:
-* Download a git client (i.e. [Github Desktop](https://desktop.github.com/) )
-* Clone this repository to a desired location
-* Open the .sln file with Visual Studio 2019
-* Run (F5)
+## Release Notes
+### Working
+* Connecting to the TrakStar device
+* Starting/Stopping a scan at 50Hz
+* Exporting the raw data as a csv file.
 
+### Future Release
+* Preferences (other sample rate etc)
+* Implementing the filtering algorithm
+* Calibration process (sensor and reference points)
 
-## Development workflow:
-### Git
-**NEVER WORK ON THE MAIN OR DEVELOP BRANCHES DIRECTLY**
-1. PULL the latest changes from upstream (i.e. in Github desktop: Repository>pull)
-2. Create a new branch for every important feature or fix you add (i.e. in Github desktop go to branch>new branch or ctrl+shift+n). name the branch accordingly (e.g. _feature/implement-filtering_ or _bugfix/CSV-memory-leak_)
-3. If a branch already exists (someone else created it), switch to it instead. (in github desktop use the "currrent branch" dropdown and pick your branch)
-4. Write/add your new code or make your changes.
-5. Commit your changes to your branch. Make sure to add a helpful message (summary) about what you have done (e.g. _Added public memmbers to the SmartScanService class_)
-6. Push changes upstream (i.e. in Github desktop: Repository>push)
-7. Repeat steps 4 5 and 6 until the feature or fix is done.
-8. Implement your changes into the develop branch by doing a *pull request*. (in github desktop: Branch> create pull request or ctrl+R). Make sure to add the repositiory maintainer (Eduard) and at least one of your team members as a reviewer. Once all reviewers have approved the pull request, the maintainer (Eduard) will merge the changes into the develop branch.
-
-### C++
-To be added.
+### Known Issues
+* When not all 4 sensors are connected, the service crashes trying to read the missing sensor.
