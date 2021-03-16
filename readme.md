@@ -1,7 +1,7 @@
 # SmartScan Software Repository
 This repository contains the source code for the Semester 7 Fontys project "SmartScan".
 
-**This project is no longer in active development.**
+**This project is no longer in active development.** Most recent fork: https://github.com/exMamaku/smart-scan
 
 **A release CLI application and library version is available to download.**
 **A Rhino plug-in implementation using the smart scan service can be found at https://github.com/eduardcazacu/smart-scan-rhino**
